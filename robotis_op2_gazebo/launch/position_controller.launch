@@ -4,12 +4,6 @@
   <rosparam file="$(find robotis_op2_gazebo)/config/position_controller.yaml" command="load"/>
 
   <!-- load the controllers -->
-<!--
-  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-  output="screen" ns="/robotis_op2" args="joint_state_controller
-                                          head_pan_position
-                                          head_tilt_position" />
--->
 
   <node pkg="controller_manager" type="spawner" name="controller_spawner" respawn="false"
   output="screen" ns="/robotis_op2" args="joint_state_controller
@@ -33,4 +27,5 @@
                                           r_el_position
                                           head_pan_position
                                           head_tilt_position" />
+                                         
 </launch>

@@ -1,0 +1,184 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!--
+  <xacro:property name="pi" value="3.141592654" />
+  -->
+  <xacro:arg name="with_hand" default="false" />  
+
+  <!-- left arm -->
+  <xacro:macro name="robotis_op2_l_arm" params="parent">
+
+  <joint name="l_back" type="fixed">
+    <parent link="${parent}"/>
+    <child link="l_back_link"/>
+    <origin xyz="0 0.06035 0" rpy="-1.5707963 0 0" />
+    <limit effort="2.8" velocity="5.6548668" lower="-2.6179939" upper="2.6179939" />
+  </joint>
+
+  <!-- left back link -->
+  <link name="l_back_link">
+    <visual>
+      <xacro:insert_mesh_l_back_link />
+    </visual>
+    <collision>
+      <xacro:insert_coll_l_back_link />
+    </collision>
+    <inertial>
+      <xacro:insert_inertia_l_back_link />
+    </inertial>
+  </link>
+      
+
+  <!-- left shoulder pitch joint -->
+  <joint name="l_sho_pitch" type="revolute">
+    <parent link="l_back_link"/>
+    <child link="l_sho_pitch_link"/>
+    <origin xyz="0 0 0" rpy="0 0 ${pi*-0.5}" />
+    <axis xyz="0 0 1" />
+    <limit effort="2.8" velocity="5.6548668" lower="-2.6179939" upper="2.6179939" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <xacro:insert_transmission name="l_sho_pitch" />
+
+  <!-- left shoulder pitch link -->
+  
+  <link name="l_sho_pitch_link"> 
+    <visual>
+      <xacro:insert_mesh_l_sho_pitch_link />
+    </visual>
+    <collision>
+      <xacro:insert_coll_l_sho_pitch_link />
+    </collision>
+    <inertial>
+      <xacro:insert_inertia_l_sho_pitch_link />
+    </inertial>
+  </link>
+
+  <!-- left shoulder roll joint -->
+
+  <joint name="l_sho_roll" type="revolute">
+    <parent link="l_sho_pitch_link"/>
+    <child link="l_sho_roll_link"/>
+    <origin xyz="-0.016 0 0.02165" rpy="1.5707963 ${pi*0.25} 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="2.8" velocity="5.6548668" lower="-2.6179939" upper="2.6179939" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <xacro:insert_transmission name="l_sho_roll" />
+
+  <!-- left shoulder roll link -->
+  <link name="l_sho_roll_link">
+    <visual>
+      <xacro:insert_mesh_l_sho_roll_link />
+    </visual>
+    <collision>
+      <xacro:insert_coll_l_sho_roll_link />
+    </collision>
+    <inertial>
+      <xacro:insert_inertia_l_sho_roll_link />
+    </inertial>
+  </link>
+
+  <!-- left elbow joint -->
+  <joint name="l_el" type="revolute">
+    <parent link="l_sho_roll_link"/>
+    <child link="l_el_link"/>
+    <origin xyz="-0.06 0 -0.016" rpy="${pi} ${pi*0.5} ${pi*-0.5}" />
+    <axis xyz="0 0 1" />
+    <limit effort="2.8" velocity="5.6548668" lower="-2.6179939" upper="2.6179939" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <xacro:insert_transmission name="l_el" />
+
+  <!-- left elbow link -->
+  <link name="l_el_link">
+    <visual>
+      <xacro:insert_mesh_l_el_link />
+    </visual>
+    <collision>
+      <xacro:insert_coll_l_el_link />
+    </collision>
+    <inertial>
+      <xacro:insert_inertia_l_el_link />
+    </inertial>
+  </link>
+
+
+  <xacro:if value="$(arg with_hand)">
+  
+  <!-- left wrist1 joint -->
+  <joint name="l_wrist1" type="continuous">
+    <parent link="l_el_link"/>
+    <child link="l_wrist1_link"/>
+    <origin xyz="0.1285 0.016 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit effort="2.8" velocity="5.6548668" />
+    <dynamics damping="0.1" friction="0.0" />      
+  </joint>
+<!--  <xacro:insert_transmission name="l_el" />-->
+
+  <!-- left wrist1 link -->
+  <link name="l_wrist1_link">
+    <visual>
+      <xacro:insert_mesh_l_wrist_link />
+    </visual>
+    <collision>
+      <xacro:insert_coll_l_wrist_link />
+    </collision>
+    <inertial>
+      <xacro:insert_inertia_l_wrist_link />
+    </inertial>
+  </link>
+
+  <!-- left wrist2 joint -->
+  <joint name="l_wrist2" type="continuous">
+    <parent link="l_wrist1_link"/>
+    <child link="l_wrist2_link"/>
+    <origin xyz="0.001 0 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit effort="2.8" velocity="5.6548668" />
+    <dynamics damping="0.1" friction="0.0" />      
+  </joint>
+
+  <!-- left wrist2 link -->
+  <link name="l_wrist2_link">
+    <visual>
+      <xacro:insert_mesh_l_wrist_link />
+    </visual>
+    <collision>
+      <xacro:insert_coll_l_wrist_link />
+    </collision>
+    <inertial>
+      <xacro:insert_inertia_l_wrist_link />
+    </inertial>
+  </link>
+
+
+  <!-- left wrist3 joint -->
+  <joint name="l_wrist3" type="continuous">
+    <parent link="l_wrist2_link"/>
+    <child link="l_hand_link"/>
+    <origin xyz="0.001 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="2.8" velocity="5.6548668" />
+    <dynamics damping="0.1" friction="0.0" />      
+  </joint>
+
+  <!-- left hand link -->
+  <link name="l_hand_link">
+    <visual>
+      <xacro:insert_mesh_l_hand_link />
+    </visual>
+    <collision>
+      <xacro:insert_coll_l_hand_link />
+    </collision>
+    <inertial>
+      <xacro:insert_inertia_l_hand_link />
+    </inertial>
+  </link>
+  </xacro:if>
+
+  </xacro:macro>
+
+</robot>

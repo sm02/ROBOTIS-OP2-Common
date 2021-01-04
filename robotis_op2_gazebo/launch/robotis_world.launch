@@ -20,14 +20,16 @@
   </include>
 
   <!-- Load the URDF into the ROS Parameter Server -->
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find robotis_op2_description)/urdf/robotis_op2.urdf.xacro'" />
+  <param name="robot_description" command="$(find xacro)/xacro '$(find robotis_op2_description)/urdf/robotis_op2.urdf.xacro' world_fixed:=true with_hand:=false" />
 
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node pkg="gazebo_ros" type="spawn_model" name="urdf_spawner" respawn="false" output="screen"
         args="-urdf -model robotis_op2 -z 0.342 -param robot_description"/>
 
   <!-- ros_control robotis humanoid launch file -->
+
   <group if ="$(arg position_controller)">
     <include file="$(find robotis_op2_gazebo)/launch/position_controller.launch" />
   </group>
+
 </launch>

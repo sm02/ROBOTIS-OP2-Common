@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!--
+  <xacro:property name="pi" value="3.141592654" />
+  -->
+
+  <!-- body link --> <!--ok-->
+  <xacro:macro name="insert_coll_body_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/body.stl"  scale="1 1 1"/>
+    </geometry>
+  </xacro:macro>
+
+  <!-- right hip yaw link -->
+  <xacro:macro name="insert_coll_r_hip_yaw_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/pelvis_r_coll.stl"  scale="1 1 1"/>
+    </geometry>
+
+  </xacro:macro>
+
+  <!-- right hip roll link -->
+  <xacro:macro name="insert_coll_r_hip_roll_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/thigh1_r_coll.stl"  scale="1 1 1"/>
+    </geometry>
+
+  </xacro:macro>
+
+  <!-- right hip pitch link -->
+  <xacro:macro name="insert_coll_r_hip_pitch_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/thigh2_r_coll.stl"  scale="1 1 1"/>
+    </geometry>
+
+  </xacro:macro>
+
+  <!-- right knee link -->
+  <xacro:macro name="insert_coll_r_knee_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/tibia_r_coll.stl"  scale="1 1 1"/>
+    </geometry>
+
+  </xacro:macro>
+
+  <!-- right ankle pitch link -->
+  <xacro:macro name="insert_coll_r_ank_pitch_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/ankle1_r_coll.stl"  scale="1 1 1"/>
+    </geometry>
+
+  </xacro:macro>
+
+  <!-- right ankle roll link -->
+  <xacro:macro name="insert_coll_r_ank_roll_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/ankle2_r_coll.stl"  scale="1 1 1"/>
+    </geometry>
+
+  </xacro:macro>
+
+  <!-- left hip yaw link -->
+  <xacro:macro name="insert_coll_l_hip_yaw_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/pelvis_l_coll.stl"  scale="1 1 1"/>
+    </geometry>
+
+  </xacro:macro>
+
+  <!-- left hip roll link -->
+  <xacro:macro name="insert_coll_l_hip_roll_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/thigh1_l_coll.stl"  scale="1 1 1"/>
+    </geometry>
+
+  </xacro:macro>
+
+  <!-- left hip pitch link -->
+  <xacro:macro name="insert_coll_l_hip_pitch_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/thigh2_l_coll.stl"  scale="1 1 1"/>
+    </geometry>
+
+  </xacro:macro>
+
+  <!-- left knee link -->
+  <xacro:macro name="insert_coll_l_knee_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/tibia_l_coll.stl"  scale="1 1 1"/>
+    </geometry>
+
+  </xacro:macro>
+
+  <!-- left ankle pitch link -->
+  <xacro:macro name="insert_coll_l_ank_pitch_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/ankle1_l_coll.stl"  scale="1 1 1"/>
+    </geometry>
+
+  </xacro:macro>
+
+  <!-- left ankle roll link -->
+  <xacro:macro name="insert_coll_l_ank_roll_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/ankle2_l_coll.stl"  scale="1 1 1"/>
+    </geometry>
+
+  </xacro:macro>
+  
+  <!-- right back link -->  <!--ok-->
+  <xacro:macro name="insert_coll_r_back_link">
+    <geometry>
+      <box size="0.001 0.001 0.001"  scale="1 1 1"/>
+    </geometry>
+  </xacro:macro>
+
+
+  <!-- right shoulder pitch joint --> <!--ok-->
+  <xacro:macro name="insert_coll_r_sho_pitch_link">
+      <origin xyz="0 0 0" rpy="0 0 3.14" />
+      <geometry>
+        <mesh filename="package://robotis_op2_description/meshes/shoulder_r_coll.stl"  scale="1 1 1"/>
+      </geometry>
+  </xacro:macro>
+
+  <!-- right shoulder roll joint -->
+  <xacro:macro name="insert_coll_r_sho_roll_link">
+    <origin xyz="0 0 0" rpy="3.14 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/arm_high_r_coll.stl"  scale="1 1 1"/>
+    </geometry>
+  </xacro:macro>
+
+  <!-- right elbow joint -->
+  <xacro:macro name="insert_coll_r_el_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+<!--      <box size="0.032 0.032 0.035" />-->
+      <mesh filename="package://robotis_op2_description/meshes/arm_lower_r_coll.stl"  scale="0.001 0.001 0.001"/>
+    </geometry>
+  </xacro:macro>
+  
+  <!-- right wrist link -->  <!--ok-->
+  <xacro:macro name="insert_coll_r_wrist_link">
+    <geometry>
+      <box size="0.001 0.001 0.001"  scale="1 1 1"/>
+    </geometry>
+  </xacro:macro>
+
+  <!-- right hand link -->  <!--ok-->
+  <xacro:macro name="insert_coll_r_hand_link">
+    <geometry>
+      <box size="0.001 0.001 0.001"  scale="1 1 1"/>
+    </geometry>
+  </xacro:macro>  
+  
+  <!-- left back link -->  <!--ok-->
+  <xacro:macro name="insert_coll_l_back_link">
+    <geometry>
+      <box size="0.001 0.001 0.001"  scale="1 1 1"/>
+    </geometry>
+  </xacro:macro>
+  
+  <!-- left shoulder pitch joint --> <!--ok-->
+  <xacro:macro name="insert_coll_l_sho_pitch_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/shoulder_l_coll.stl"  scale="1 1 1"/>
+    </geometry>
+  </xacro:macro>
+
+  <!-- left shoulder roll joint --><!--ok-->
+  <xacro:macro name="insert_coll_l_sho_roll_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/arm_high_l_coll.stl"  scale="1 1 1"/>
+    </geometry>
+  </xacro:macro>
+
+  <!-- left elbow joint --><!--ok-->
+  <xacro:macro name="insert_coll_l_el_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+<!--      <box size="0.032 0.032 0.035" />-->
+      <mesh filename="package://robotis_op2_description/meshes/arm_lower_l_coll.stl"  scale="0.001 0.001 0.001"/>
+    </geometry>
+  </xacro:macro>
+
+  <!-- left wrist link -->  <!--ok-->
+  <xacro:macro name="insert_coll_l_wrist_link">
+    <geometry>
+      <box size="0.001 0.001 0.001"  scale="1 1 1"/>
+    </geometry>
+  </xacro:macro>
+
+  <!-- left hand link -->  <!--ok-->
+  <xacro:macro name="insert_coll_l_hand_link">
+    <geometry>
+      <box size="0.001 0.001 0.001"  scale="1 1 1"/>
+    </geometry>
+  </xacro:macro>
+
+  <!-- head yaw joint -->  <!--ok-->
+  <xacro:macro name="insert_coll_head_pan_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/neck_coll.stl"  scale="1 1 1"/>
+    </geometry>
+
+  </xacro:macro>
+
+  <!-- head yaw joint --> <!--ok-->
+  <xacro:macro name="insert_coll_head_tilt_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://robotis_op2_description/meshes/head_coll.stl"  scale="1 1 1"/>
+    </geometry>
+
+  </xacro:macro>
+
+</robot>
